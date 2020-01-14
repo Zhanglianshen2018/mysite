@@ -15,10 +15,13 @@ class Blog(models.Model):
     author=models.ForeignKey(User,on_delete=models.DO_NOTHING,verbose_name='作者')
     created_time=models.DateTimeField(auto_now_add=True,verbose_name='创建时间')
     last_updated_time=models.DateTimeField(auto_now=True,verbose_name='更新时间')
-    isdeleted=models.BooleanField(verbose_name='是否删除')
+    isdeleted=models.BooleanField(verbose_name='是否删除',default=False)
 
     def __str__(self):
         return '<Blog : %s>'%self.title
+
+    class Meta:
+        ordering=['-created_time']
 
 
 
