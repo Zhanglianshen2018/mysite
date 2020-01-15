@@ -15,7 +15,9 @@ div.blog h3{
 div.blog p.blog-info {
     margin-top: 0;
 }
-
+div.paginator {
+    text-align: center!important;
+}
 ul.blog-info-description {
     list-style-type: none;
     margin-bottom: 1em;
@@ -27,3 +29,4 @@ ul.blog-info-description li{
 div.blog-content{
     text-indent: 2em;
 }
+
