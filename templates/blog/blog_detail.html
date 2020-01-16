@@ -25,8 +25,22 @@
 				    <li>发表日期：{{ blog.created_time|date:"Y-m-d H:n:s" }}</li>
 				</ul>                
 				<p>{{ blog.content }}</p>
+                <div class="blog-more">
+                    {% if previous_blog %}
+                         <a href="{% url 'blog_detail'  previous_blog.pk %}"> <p>上一篇：{{ previous_blog.title }}</p></a>
+                    {% else %}
+                        <p>没有了</p>
+                    {% endif %}
+
+                    {% if last_blog %}
+                         <a href="{% url 'blog_detail'  last_blog.pk %}"> <p>下一篇：{{ last_blog.title }}</p></a>
+                    {% else %}
+                        <p>没有了</p>
+                    {% endif %}
+
+                </div>
 			</div>
-			
+
 		</div>
 		
 	</div>    

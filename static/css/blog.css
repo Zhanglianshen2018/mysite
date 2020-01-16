@@ -30,3 +30,14 @@ div.blog-content{
     text-indent: 2em;
 }
 
+div.blog-more{
+    text-align: center;
+}
+
+div.blog-more p{
+
+    display: inline-block;
+    margin-top: 1em;
+    margin-right: 5em;
+}
+
