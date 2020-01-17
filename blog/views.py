@@ -71,8 +71,15 @@ def blogs_with_date(request,year,month):
 def blog_detail(request, blog_pk):
     context = {}
     blog = get_object_or_404(Blog, pk=blog_pk)
+    if not request.COOKIES.get('blog_%s_readed' % blog_pk):
+        blog.readed_time += 1
+        blog.save()
+
     context['previous_blog']=Blog.objects.filter(created_time__gt=blog.created_time).last()
     context['last_blog']=Blog.objects.filter(created_time__lt=blog.created_time).first()
     context['blog']=blog
-    return render(request, 'blog/blog_detail.html', context)
+    #print("blog %s is read %d times" % (blog.title,blog.readed_time))
+    response= render(request, 'blog/blog_detail.html', context) #响应
+    response.set_cookie('blog_%s_readed' % blog_pk,'true')
+    return response
 
