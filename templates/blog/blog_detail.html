@@ -43,6 +43,53 @@
 			</div>
 
 		</div>
-		
+		<div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+                <!--div style="margin-top:2em;border:1px dashed;padding:2em;"-->
+                <div class="comment_area">
+                    <h3 class="comment_area_title">提交评论</h3>
+                    {% if user.is_authenticated %}
+                         <!--评论框-->
+                         <form action="{% url 'update_comment' %}" method="POST" style="overflow:hidden">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="comment_text">{{ user.username }}，欢迎评论~</label>
+                                <textarea id="comment_text" class="form-control" name="text" rows="4"></textarea>
+                            </div>
+
+                            <input type="hidden" name="object_id" value="{{ blog.pk }}">
+                            <input type="hidden" name="content_type" value="blog">
+                            <input type="submit" value="评论" class="btn btn-primary" style="float:right">
+                        </form>
+                    {% else %}
+                        未登录
+                        <form action="{% url 'login' %}" method="POST">
+                            {% csrf_token %}
+                            <span>用户名：</span>
+                            <input type="text" name="username">&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span>密码：</span>
+                            <input type="password" name="password">
+                            <input type="submit" value="登录">
+                        </form>
+                    {% endif %}
+                </div>
+                <div class="comment_area">
+                    <h3 class="comment_area_title">评论列表</h3>
+
+                    {% for comment in comments %}
+                        <div>
+                            <li>
+                                 {{ comment.user.username }}
+                                ({{ comment.comment_time|date:"Y-m-d H:n:s" }})：
+                                {{ comment.text }}
+                            </li>
+                        </div>
+
+                    {% empty %}
+                        暂无评论
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
 	</div>    
 {% endblock %}

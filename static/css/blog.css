@@ -41,3 +41,12 @@ div.blog-more p{
     margin-right: 5em;
 }
 
+div.comment_area{
+    margin-top: 2em
+
+}
+
+h3.comment_area_title{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.4em;
+}
