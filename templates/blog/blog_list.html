@@ -33,7 +33,7 @@
                               <span class="glyphicon glyphicon-time"></span>：{{ blog.created_time|date:"Y-m-d" }}&nbsp;&nbsp;
                               阅读({{ blog.readed_time }})
 						  </p>
-					      <p class="blog-content">{{ blog.content|truncatechars:30 }}</p>
+					      <p class="blog-content">{{ blog.content|striptags|truncatechars:30|safe}}</p>
 					  	</div>
 					  {% empty %}
 					      <div class="blog">
