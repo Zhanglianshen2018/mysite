@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path
-from .views import home,login,register
+from .views import home,login,register,logout,user_info
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -29,6 +29,8 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('login/',login,name='login'),
     path('register/',register,name='register'),
+    path('logout/',logout,name='logout'),
+    path('user_info/',user_info,name='user_info'),
     path('comment/', include('comment.urls')),
     
 ]
