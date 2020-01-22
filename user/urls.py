@@ -16,20 +16,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path
-from .views import home
 from user.views import login,register,logout,user_info
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     #path('', blog_list, name='home'),
-    path('',home, name='home'),
-    path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls')),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('comment/', include('comment.urls')),
-    path('user/', include('user.urls')),
-    
+    path('login/',login,name='login'),
+    path('register/',register,name='register'),
+    path('logout/',logout,name='logout'),
+    path('user_info/',user_info,name='user_info'),
 ]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
